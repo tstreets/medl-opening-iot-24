@@ -42,6 +42,8 @@ io.on("connection", (socket) => {
         users[clientId].creature.includeImages = includeImages;
         users[clientId].email = userEmail;
       }
+
+      socket.emit("info", users[clientId]);
     }
   );
 

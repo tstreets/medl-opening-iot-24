@@ -1,11 +1,16 @@
 const socket = io();
 
+socket.on("info", (info) => {
+  console.log(info);
+});
+
 document.querySelector("#form-confirm").onclick = function () {
   const userEmail = document.querySelector("#email").value.trim().toLowerCase();
   const includeImages = document.querySelector("#pics").checked;
-  console.log(userEmail, includeImages);
   if (userEmail) {
-    const creatureNum = location.hash.split("#p")[1].slice(0, 1);
+    const creatureNum = location.hash.includes("#p")
+      ? location.hash.split("#p")[1].slice(0, 1)
+      : "";
     socket.emit("creature-attempt-ready", {
       creatureNum: Number(creatureNum),
       includeImages: includeImages,
