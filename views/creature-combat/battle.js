@@ -33,6 +33,8 @@ socket.on("user-joined", function (userServerInfo, isCreature) {
   if (!isCreature) {
     document.querySelector(".menu").style.display = "none";
   } else {
+    surrenderRef.style.display = "inline";
+
     menuButtonsRef.forEach(function (btnRef) {
       btnRef.setAttribute("disabled", true);
       btnRef.onclick = attackPlayer;
@@ -86,7 +88,12 @@ function updateBattle() {
   }
 
   if (isPC) {
-    if (!battleInfo[mainPlayer].activeTurn) {
+    if (
+      !battleInfo[mainPlayer].activeTurn ||
+      Object.values(battleInfo).some(
+        (bi) => !isNaN(bi.health) && bi.health <= 0
+      )
+    ) {
       menuButtonsRef.forEach((btnRef) => btnRef.setAttribute("disabled", true));
     } else {
       menuButtonsRef.forEach((btnRef) => btnRef.removeAttribute("disabled"));
