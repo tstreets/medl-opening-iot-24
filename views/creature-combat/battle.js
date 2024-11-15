@@ -46,6 +46,7 @@ socket.on("creatures-stats", function (battleServerInfo) {
 });
 
 function attackPlayer() {
+  loaderRef.classList.remove("hide");
   socket.emit("creatures-attack", { pc: secondPlayer, dmg: 1 });
 }
 
