@@ -89,6 +89,11 @@ io.on("connection", (socket) => {
     }
   });
 
+  socket.on("creatures-reset", function () {
+    creaturesStats = { 1: {}, 2: {} };
+    io.emit("creatures-stats", creaturesStats);
+  });
+
   socket.on("disconnect", function () {
     // delete users[clientId];
     users[clientId].active = false;
