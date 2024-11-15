@@ -9,6 +9,22 @@ app.use(express.json());
 
 const users = {};
 
+const creatureBase = {
+  health: 5,
+  atk: 1,
+  def: 0,
+  head: "",
+  arms: "",
+  legs: "",
+  userId: "",
+  image: "",
+};
+
+const creaturesStats = {
+  1: {},
+  2: {},
+};
+
 app.get("/api", function (req, res) {
   res.redirect("https://github.com/tstreets/medl-opening-iot-24");
 });
@@ -37,18 +53,27 @@ io.on("connection", (socket) => {
 
   socket.on(
     "creature-attempt-ready",
-    function ({ creatureNum, includeImages, userEmail }) {
-      users[clientId].ready = true;
-      if (creatureNum === 2 || creatureNum === 1) {
-        users[clientId].creature.creatureNum = creatureNum;
-        users[clientId].creature.includeImages = includeImages;
-        users[clientId].email = userEmail;
+    function ({ creatureNum, includeImages, userEmail, userName }) {
+      users[clientId].active = true;
+      users[clientId].email = userEmail;
+      users[clientId].name = userName;
+      users[clientId].includeImages = includeImages;
+      let isCreature =
+        (creatureNum === 2 || creatureNum === 1) &&
+        !creaturesStats[creatureNum].userId;
+
+      if (isCreature) {
+        creaturesStats[creatureNum] = { ...creatureBase, userId: clientId };
       }
+
+      io.emit("creatures-stats", creaturesStats);
+      socket.emit("user-joined", users[clientId], isCreature);
     }
   );
 
   socket.on("disconnect", function () {
     // delete users[clientId];
+    users[clientId].active = false;
   });
 });
 

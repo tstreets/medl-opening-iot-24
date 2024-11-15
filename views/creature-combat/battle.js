@@ -12,6 +12,28 @@ const creationRef = document.querySelector(".creation");
 
 const socket = io();
 
+let userInfo = {};
+
+let battleInfo = {};
+
+socket.on("user-joined", function (userServerInfo, isCreature) {
+  if (!loaderRef.classList.contains("hide")) loaderRef.classList.add("hide");
+  creationRef.style.display = "none";
+  userInfo = userServerInfo;
+  if (isCreature) {
+    battleRef.style.display = "grid";
+  }
+});
+
+socket.on("creatures-stats", function (battleServerInfo) {
+  battleInfo = battleServerInfo;
+  updateBattle();
+});
+
+function updateBattle() {
+  console.log(battleInfo);
+}
+
 function generateRandomName() {
   loaderRef.classList.remove("hide");
   const randomAnimal = animals[parseInt(Math.random() * animals.length)];
