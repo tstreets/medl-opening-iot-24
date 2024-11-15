@@ -41,6 +41,8 @@ socket.on("user-joined", function (userServerInfo, isCreature) {
 });
 
 socket.on("creatures-stats", function (battleServerInfo) {
+  if (!loaderRef.classList.contains("hide")) loaderRef.classList.add("hide");
+
   battleInfo = battleServerInfo;
   updateBattle();
 });
@@ -48,6 +50,10 @@ socket.on("creatures-stats", function (battleServerInfo) {
 function attackPlayer() {
   loaderRef.classList.remove("hide");
   socket.emit("creatures-attack", { pc: secondPlayer, dmg: 1 });
+
+  setTimeout(function () {
+    if (!loaderRef.classList.contains("hide")) loaderRef.classList.add("hide");
+  }, 3000);
 }
 
 function updateBattle() {
@@ -147,7 +153,7 @@ document.querySelector("#form-confirm").onclick = attemptReadyUser;
 surrenderRef.style.display = "none";
 surrenderRef.onclick = function (e) {
   e.preventDefault();
-  location.assign("/creature-combat");
+  location.assign("/creature-combat/battle.html");
 };
 
 generateRandomName();
