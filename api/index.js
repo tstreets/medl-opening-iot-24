@@ -37,7 +37,7 @@ io.on("connection", (socket) => {
 
   socket.on(
     "creature-attempt-ready",
-    function ({ creatureNum, includeImages }) {
+    function ({ creatureNum, includeImages, userEmail }) {
       users[clientId].ready = true;
       if (creatureNum === 2 || creatureNum === 1) {
         users[clientId].creature.creatureNum = creatureNum;
