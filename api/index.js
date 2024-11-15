@@ -17,7 +17,9 @@ const creatureBase = {
   arms: "",
   legs: "",
   userId: "",
+  userName: "",
   image: "",
+  activeTurn: false,
 };
 
 const creaturesStats = {
@@ -55,6 +57,7 @@ io.on("connection", (socket) => {
     "creature-attempt-ready",
     function ({ creatureNum, includeImages, userEmail, userName }) {
       users[clientId].active = true;
+      users[clientId].id = clientId;
       users[clientId].email = userEmail;
       users[clientId].name = userName;
       users[clientId].includeImages = includeImages;
@@ -63,13 +66,25 @@ io.on("connection", (socket) => {
         !creaturesStats[creatureNum].userId;
 
       if (isCreature) {
-        creaturesStats[creatureNum] = { ...creatureBase, userId: clientId };
+        creaturesStats[creatureNum] = {
+          ...creatureBase,
+          userId: clientId,
+          userName: userName,
+          activeTurn: !Object.values(creaturesStats).some((s) => s.activeTurn),
+        };
       }
+      socket.emit("user-joined", users[clientId], isCreature);
 
       io.emit("creatures-stats", creaturesStats);
-      socket.emit("user-joined", users[clientId], isCreature);
     }
   );
+
+  socket.on("creatures-attack", function ({ dmg, pc }) {
+    if (creaturesStats[pc] && dmg) {
+      creaturesStats[pc].health -= dmg;
+      io.emit("creatures-stats", creaturesStats);
+    }
+  });
 
   socket.on("disconnect", function () {
     // delete users[clientId];

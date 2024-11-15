@@ -1,8 +1,13 @@
 @import "../global.css";
 
+.battle {
+  height: 90%;
+}
+
 .battle .creature {
   display: grid;
   grid-template-columns: 2fr 3fr;
+  margin: auto 0;
 }
 
 .battle .creature .creature-pic {
