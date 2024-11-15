@@ -1,1 +1,51 @@
 @import "../global.css";
+
+.battle .creature {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.battle .creature .creature-stats {
+  border: 3px double black;
+  padding: 8px 4px;
+}
+
+.battle .creature .creature-stats * {
+  font-size: 20px;
+}
+
+.battle h4 {
+  margin-bottom: 4px;
+}
+
+.battle .menu ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 50px 50px;
+  list-style: none;
+  /* background-color: var(--stone-gray); */
+}
+
+.menu button {
+  width: 100%;
+  height: 100%;
+  border: 3px outset var(--jet-black);
+  background-color: #8a8d8fa8;
+}
+
+.menu button:disabled {
+  background-color: var(--stone-gray);
+  cursor: not-allowed;
+}
+
+.menu button:active {
+  background-color: var(--electric-blue);
+}
+
+.menu button:active:disabled {
+  background-color: var(--stone-gray);
+}
+
+.battle .creature .creature-stats i {
+  color: var(--crimson-red);
+}

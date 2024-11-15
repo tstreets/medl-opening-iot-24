@@ -22,9 +22,6 @@
 html,
 body {
   height: 100%;
-  /* background-color: var(--stone-gray); */
-  /* background-color: var(--soft-sand); */
-  /* background: linear-gradient(to bottom, var(--soft-sand), var(--stone-gray)); */
   background-color: rgba(44, 107, 63, 0.1); /* A very light Emerald Green */
 }
 
