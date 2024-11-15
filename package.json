@@ -1,0 +1,17 @@
+{
+  "name": "medl-opening-iot-24",
+  "version": "1.0.0",
+  "description": "Lead by Ty Streets _(Visiting Lecturer in Fall 2024)_",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}
