@@ -43,7 +43,7 @@ io.on("connection", (socket) => {
         users[clientId].email = userEmail;
       }
 
-      socket.emit("info", users[clientId]);
+      io.emit("info", users[clientId]);
     }
   );
 
