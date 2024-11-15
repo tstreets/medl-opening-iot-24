@@ -95,7 +95,7 @@ button:focus {
 }
 
 .creation-title h4 {
-  text-align: center;
+  text-align: left;
   font-size: 24px;
   color: var(--deep-purple);
 }
@@ -195,7 +195,7 @@ button:focus {
 
 @media only screen and (orientation: landscape) {
   main {
-    display: block;
+    display: grid;
   }
   #message {
     display: none;
@@ -204,9 +204,9 @@ button:focus {
 
 @media only screen and (orientation: portrait) {
   main {
-    display: none;
+    display: none !important;
   }
   #message {
-    display: block;
+    display: block !important;
   }
 }

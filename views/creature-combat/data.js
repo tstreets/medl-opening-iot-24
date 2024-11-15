@@ -1,4 +1,4 @@
-const animals = [
+export const animals = [
   "Aardvark",
   "Albatross",
   "Alligator",
@@ -222,7 +222,7 @@ const animals = [
   "Zebra",
 ];
 
-const adjectives = [
+export const adjectives = [
   "aback",
   "abaft",
   "abandoned",

@@ -7,6 +7,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const users = {};
+
 app.get("/api", function (req, res) {
   res.redirect("https://github.com/tstreets/medl-opening-iot-24");
 });
@@ -28,8 +30,6 @@ const server = app.listen(port);
 
 const io = new Server(server);
 
-const users = {};
-
 io.on("connection", (socket) => {
   const clientId = socket.client.id;
   const timeJoined = Date.now();
@@ -48,7 +48,7 @@ io.on("connection", (socket) => {
   );
 
   socket.on("disconnect", function () {
-    delete users[clientId];
+    // delete users[clientId];
   });
 });
 
