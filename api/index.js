@@ -82,6 +82,9 @@ io.on("connection", (socket) => {
   socket.on("creatures-attack", function ({ dmg, pc }) {
     if (creaturesStats[pc] && dmg) {
       creaturesStats[pc].health -= dmg;
+      const otherPc = pc === 1 ? 2 : 1;
+      creaturesStats[pc].activeTurn = true;
+      creaturesStats[otherPc].activeTurn = false;
       io.emit("creatures-stats", creaturesStats);
     }
   });
