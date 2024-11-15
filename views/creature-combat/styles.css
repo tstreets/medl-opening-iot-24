@@ -39,7 +39,7 @@
   list-style: none;
 }
 
-.menu button {
+button {
   width: 100%;
   height: 100%;
   border: 3px outset var(--jet-black);
@@ -54,18 +54,18 @@
   align-items: center;
 }
 
-.menu button:disabled {
+button:disabled {
   background-color: var(--stone-gray) !important;
   color: var(--jet-black) !important;
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.menu button:active {
+button:active {
   transform: scale(0.98);
 }
 
-.menu button:focus {
+button:focus {
   outline: 3px solid var(--golden-amber);
   background-color: var(--electric-blue);
 }
@@ -82,8 +82,119 @@
   border-radius: 8px;
 }
 
+/* Creation Styling */
+
+.creation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 16px;
+}
+
+.creation :nth-child(1) {
+  grid-row: span 2;
+}
+
+.creation-title h4 {
+  text-align: center;
+  font-size: 24px;
+  color: var(--deep-purple);
+}
+
+.creation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.email-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-input.row {
+  flex-direction: row;
+}
+
+.email-input.row input {
+  margin-right: 8px;
+}
+
+.email-input label {
+  font-size: 16px;
+  color: var(--jet-black);
+}
+
+.email-input input {
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid var(--stone-gray);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.email-input input:focus {
+  border-color: var(--electric-blue);
+}
+
+.email-input p {
+  font-size: 14px;
+  color: var(--stone-gray);
+  margin-top: 8px;
+}
+
+.form-actions button {
+  padding: 16px;
+  background-color: var(--electric-blue);
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0a0a0a75;
+}
+
+.loader.hide {
+  display: none;
+}
+
+.loader h2 {
+  position: fixed;
+  top: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.loader i {
+  position: fixed;
+  top: 50%;
+  left: -75px;
+  animation-name: fly;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  color: white;
+}
+
+.loader i:nth-child(2) {
+  animation-delay: 2s;
+}
+@keyframes fly {
+  from {
+    left: -75px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
 @media only screen and (orientation: landscape) {
-  .battle {
+  main {
     display: block;
   }
   #message {
@@ -92,7 +203,7 @@
 }
 
 @media only screen and (orientation: portrait) {
-  .battle {
+  main {
     display: none;
   }
   #message {

@@ -15,7 +15,7 @@
       </ul>
     </nav>
 
-    <main class="battle">
+    <main class="battle" style="display: none">
       <section class="creature">
         <div class="creature-stats">
           <h4>Chilly Cougar</h4>
@@ -57,18 +57,59 @@
       <section class="menu">
         <ul>
           <li>
-            <button>Head</button>
+            <button>
+              <i class="meh icon"></i>
+              Head
+            </button>
           </li>
           <li>
-            <button>Arms</button>
+            <button>
+              <i class="hand rock icon"></i>
+              Arms
+            </button>
           </li>
           <li>
-            <button>Legs</button>
+            <button>
+              <i class="paw icon"></i>
+              Legs
+            </button>
           </li>
           <li>
-            <button disabled>Confirm</button>
+            <button disabled>
+              <i class="cut icon"></i>
+              Atttack!
+            </button>
           </li>
         </ul>
+      </section>
+    </main>
+
+    <main class="creation">
+      <section class="creation-img">
+        <img
+          src="https://p.globalsources.com/IMAGES/PDT/B1191072088/hopper-ball.jpg"
+          alt="Pink Panda Hopper Ball"
+          height="250"
+        />
+      </section>
+      <section class="creation-title">
+        <h4>
+          <i class="shuffle icon"></i>
+          Pink Panda
+        </h4>
+      </section>
+      <section class="creation-form">
+        <div class="email-input">
+          <label for="email">Email:</label>
+          <input id="email" placeholder="Enter your email..." type="email" />
+        </div>
+        <div class="email-input row">
+          <input id="pics" value="pics" type="checkbox" />
+          <label for="pics">Opt in for getting an image of your creature</label>
+        </div>
+        <div class="form-actions">
+          <button id="form-confirm">Confirm</button>
+        </div>
       </section>
     </main>
 
@@ -76,6 +117,12 @@
       <i class="sync massive icon"></i>
       <h1>Please rotate your device to landscape</h1>
     </main>
+
+    <div class="loader hide">
+      <h2>Loading</h2>
+      <i class="plane huge icon"></i>
+      <i class="plane huge icon"></i>
+    </div>
 
     <script src="battle.js" type="module"></script>
   </body>
