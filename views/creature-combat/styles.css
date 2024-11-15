@@ -5,6 +5,10 @@
   grid-template-columns: 2fr 3fr;
 }
 
+.battle .creature .creature-pic {
+  text-align: center;
+}
+
 .battle .creature .creature-stats {
   border: 3px double black;
   padding: 8px 4px;
