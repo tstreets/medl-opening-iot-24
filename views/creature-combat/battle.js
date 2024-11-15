@@ -1,12 +1,11 @@
-const socket = io();
+import "/socket.io/socket.io.js";
 
-socket.on("info", (info) => {
-  console.log(info);
-});
+const socket = io();
 
 document.querySelector("#form-confirm").onclick = function () {
   const userEmail = document.querySelector("#email").value.trim().toLowerCase();
   const includeImages = document.querySelector("#pics").checked;
+  console.log(userEmail, includeImages);
   if (userEmail) {
     const creatureNum = location.hash.includes("#p")
       ? location.hash.split("#p")[1].slice(0, 1)

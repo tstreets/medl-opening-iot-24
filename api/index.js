@@ -20,6 +20,8 @@ app.all("/api/*", function (req, res) {
 
 app.use(express.static(path.join(__dirname, "../views")));
 
+app.use("socket.io", express.static("node_modules/socket.io"));
+
 const port = process.env.PORT || 3007;
 
 const server = app.listen(port);
@@ -42,13 +44,11 @@ io.on("connection", (socket) => {
         users[clientId].creature.includeImages = includeImages;
         users[clientId].email = userEmail;
       }
-
-      io.emit("info", users[clientId]);
     }
   );
 
   socket.on("disconnect", function () {
-    // delete users[clientId];
+    delete users[clientId];
   });
 });
 
